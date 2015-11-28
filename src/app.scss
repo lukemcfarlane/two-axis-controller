@@ -1,0 +1,29 @@
+@import './variables.scss';
+@import './components/axis-pad.scss';
+
+
+body {
+  margin: 0;
+}
+
+div.container {
+  div.header {
+    text-align: center;
+    height: 10rem;
+    box-shadow: 0 0 2rem 0 $dark-grey;
+    background-color: $blue;
+
+    h1 {
+      height: 10rem;
+      color: white;
+      line-height: 10rem;
+      font-family: sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.25rem;
+    }
+  }
+
+  div.content {
+    padding-top: 8rem;
+  }
+}
