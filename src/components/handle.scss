@@ -4,10 +4,9 @@ $handle-size: 14px;
 
 div.handle {
   position: absolute;
-  // width: $handle-size;
-  // height: $handle-size;
   border-radius: 50%;
   background-color: $dark-grey;
+  mix-blend-mode: screen;
   cursor: pointer;
   z-index: 1;
 }
