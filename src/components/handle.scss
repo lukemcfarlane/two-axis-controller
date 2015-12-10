@@ -1,4 +1,5 @@
 @import '../variables.scss';
+@import 'bourbon';
 
 $handle-size: 14px;
 
@@ -9,4 +10,5 @@ div.handle {
   mix-blend-mode: screen;
   cursor: pointer;
   z-index: 1;
+  @include transform(translate(-50%, -50%));
 }

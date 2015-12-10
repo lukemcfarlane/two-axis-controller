@@ -4,12 +4,12 @@ $pad-size: 25rem;
 
 div.axis-pad {
   z-index: 0;
-  position: relative;
   border: 2px solid $dark-grey;
   border-radius: 0.2rem;
   width: $pad-size;
   height: $pad-size;
   margin: 0 auto;
+  position: relative;
 
   &::before {
     content: '';

@@ -4,8 +4,8 @@ import './handle.scss';
 export default class App extends Component {
   render() {
     const style = {
-      width: this.props.size,
-      height: this.props.size,
+      width: 30,
+      height: 30,
       top: this.props.pos.y,
       left: this.props.pos.x
     }

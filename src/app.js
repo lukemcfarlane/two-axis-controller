@@ -9,7 +9,8 @@ export default class App extends Component {
       isDragging: false,
       mousePos: {
         x: 0,
-        y: 0
+        y: 0,
+        motorValues: [ 0, 0 ]
       }
     }
   }
@@ -25,9 +26,16 @@ export default class App extends Component {
   onMouseMove (e) {
     this.setState({
       mousePos: {
-        x: e.clientX,
-        y: e.clientY
+        x: e.pageX,
+        y: e.pageY
       }
+    })
+  }
+
+  onMotorsChange (values) {
+    console.log(`Motors changed: [${values[0]}, ${values[1]}]`)
+    this.setState({
+      motorValues: values
     })
   }
 
@@ -39,8 +47,13 @@ export default class App extends Component {
 
     const props = {
       isDragging: this.state.isDragging,
-      handleMouseDown: this.startDragging.bind(this)
+      handleMouseDown: this.startDragging.bind(this),
+      onMotorsChange: this.onMotorsChange.bind(this)
     }
+
+    const motorValues = this.state.motorValues || []
+    const motor1 = motorValues[0] ? motorValues[0].toFixed(0) : 0
+    const motor2 = motorValues[1] ? motorValues[1].toFixed(0) : 0
 
     return (
       <div { ...events } className="container">
@@ -48,6 +61,9 @@ export default class App extends Component {
           <h1>Beam controller</h1>
         </div>
         <div className="content">
+          <div className="output">
+            { motor1 }, { motor2 }
+          </div>
           <AxisPad { ...props } mousePos={ this.state.mousePos } />
         </div>
       </div>
