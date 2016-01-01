@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AxisPad from './components/axis-pad'
+import throttle from './utils/throttle'
 import './app.scss'
 
 export default class App extends Component {
@@ -32,12 +33,12 @@ export default class App extends Component {
     })
   }
 
-  onMotorsChange (values) {
-    console.log(`Motors changed: [${values[0]}, ${values[1]}]`)
+  onMotorsChange = throttle(function(values) {
     this.setState({
       motorValues: values
     })
-  }
+  }, 100, this)
+
 
   render () {
     const events = {
@@ -48,7 +49,7 @@ export default class App extends Component {
     const props = {
       isDragging: this.state.isDragging,
       handleMouseDown: this.startDragging.bind(this),
-      onMotorsChange: this.onMotorsChange.bind(this)
+      onMotorsChange: throttle(this.onMotorsChange, 1000, this)
     }
 
     const motorValues = this.state.motorValues || []

@@ -56,7 +56,6 @@ export default class AxisPad extends React.Component {
         x = this.width
       }
 
-      console.log(`Mouse pos (x, y) = (${x}, ${y})`)
       this.setState({
         handlePos: { x, y }
       })
