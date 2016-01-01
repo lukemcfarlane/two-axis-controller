@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import AxisPad from './components/axis-pad';
-import './app.scss';
+import React, { Component } from 'react'
+import AxisPad from './components/axis-pad'
+import './app.scss'
 
 export default class App extends Component {
   constructor() {
@@ -67,6 +67,6 @@ export default class App extends Component {
           <AxisPad { ...props } mousePos={ this.state.mousePos } />
         </div>
       </div>
-    );
+    )
   }
 }

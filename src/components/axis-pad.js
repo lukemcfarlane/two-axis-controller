@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Handle from './handle';
+import Handle from './handle'
 
 export default class AxisPad extends React.Component {
   constructor() {
@@ -41,22 +41,22 @@ export default class AxisPad extends React.Component {
 
   setHandlePos() {
     if(this.props.isDragging && this.refs.axisPad) {
-      var x = this.state.mousePos.x - this.left;
-      var y = this.state.mousePos.y - this.top;
+      var x = this.state.mousePos.x - this.left
+      var y = this.state.mousePos.y - this.top
 
       if (y < 0) {
-        y = 0;
+        y = 0
       } else if (y > this.height) {
         y = this.height
       }
 
       if (x < 0) {
-        x = 0;
+        x = 0
       } else if (x > this.width) {
         x = this.width
       }
 
-      console.log(`Mouse pos (x, y) = (${x}, ${y})`);
+      console.log(`Mouse pos (x, y) = (${x}, ${y})`)
       this.setState({
         handlePos: { x, y }
       })

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './handle.scss';
+import React, { Component } from 'react'
+import './handle.scss'
 
 export default class App extends Component {
   render() {
@@ -19,6 +19,6 @@ export default class App extends Component {
            { ...events }
            className="handle">
       </div>
-    );
+    )
   }
 }
