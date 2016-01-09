@@ -4,6 +4,15 @@ var bourbon = require('node-bourbon').includePaths
 
 module.exports = {
   devtool: 'eval',
+  node: {
+    fs: 'empty',
+    child_process: 'empty',
+    readline: 'empty',
+    tls: 'empty',
+    bufferutil: 'empty',
+    'utf-8-validate': 'empty',
+    ws: 'empty'
+  },
   entry: [
     'webpack-dev-server/client?http://localhost:3001',
     'webpack/hot/only-dev-server',

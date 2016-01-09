@@ -48,6 +48,7 @@
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "sass-loader": "^3.1.2",
+    "simplewebrtc": "2.0.0",
     "style-loader": "^0.13.0"
   }
 }

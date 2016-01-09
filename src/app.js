@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import SimpleWebRTC from 'simplewebrtc'
 import AxisPad from './components/axis-pad'
 import throttle from './utils/throttle'
 import './app.scss'
 
 export default class App extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       isDragging: false,
@@ -14,6 +15,24 @@ export default class App extends Component {
         motorValues: [ 0, 0 ]
       }
     }
+  }
+
+  componentDidMount () {
+    console.log('Setting up webrtc...')
+    this.webrtc = new SimpleWebRTC({})
+      .once('connectionReady', () => {
+        console.log('Joining room tractor-beam...')
+        this.webrtc.joinRoom('tractor-beam')
+      })
+  }
+
+  componentWillUnmount () {
+    this.webrtc.leaveRoom()
+  }
+
+  sendSpeeds (speeds) {
+    console.log(`Sending speeds: [${speeds[0]}, ${speeds[1]}]`)
+    this.webrtc.sendDirectlyToAll('control', 'speeds', speeds)
   }
 
   startDragging () {
@@ -37,8 +56,8 @@ export default class App extends Component {
     this.setState({
       motorValues: values
     })
+    this.sendSpeeds(values)
   }, 100, this)
-
 
   render () {
     const events = {

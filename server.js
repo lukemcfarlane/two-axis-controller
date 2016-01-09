@@ -2,7 +2,7 @@ var webpack = require('webpack')
 var WebpackDevServer = require('webpack-dev-server')
 var config = require('./webpack.config')
 
-const port = 3001
+const port = 3002
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
