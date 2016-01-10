@@ -29,18 +29,30 @@ export default class AxisPad extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(this.state.mousePos.x !== nextProps.mousePos.x &&
-       this.state.mousePos.y !== nextProps.mousePos.y) {
+    if (this.props.isDragging) {
+      if (!nextProps.isDragging) {
+        this.setState({
+          handlePos: {
+            x: this.width / 2,
+            y: this.height /2
+          }
+        })
+        this.props.onMotorsChange([ 0, 0 ])
+      } else {
+        if(this.state.mousePos.x !== nextProps.mousePos.x &&
+           this.state.mousePos.y !== nextProps.mousePos.y) {
 
-      this.setState({
-        mousePos: nextProps.mousePos,
-      })
-      this.setHandlePos()
+          this.setState({
+            mousePos: nextProps.mousePos,
+          })
+          this.setHandlePos()
+        }
+      }
     }
   }
 
   setHandlePos() {
-    if(this.props.isDragging && this.refs.axisPad) {
+    if(this.refs.axisPad) {
       var x = this.state.mousePos.x - this.left
       var y = this.state.mousePos.y - this.top
 
